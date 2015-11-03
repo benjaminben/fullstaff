@@ -5,10 +5,101 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-</head>
-<body>
 
+  <style>
+
+    header {
+      width: 98%;
+      height: 50px;
+      position: fixed;
+      border: 1px solid black;
+      background-color: white;
+      z-index: 5;
+    }
+
+    header div {
+      display: inline;
+      line-height: 50px;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    #userNav {
+      float: right;
+    }
+
+    #userIconBox {
+      height: 40px;
+      width: 40px;
+      border: 1px solid black;
+    }
+
+    .spacer {
+      height: 50px;
+    }
+
+    #mainContainer {
+      display: flex;
+      flex-flow: row wrap;
+      width: 769px;
+      z-index: 0;
+/*      justify-content: space-around;
+*/    }
+
+    .vidContainer {
+      width: 20%;
+      height: auto;
+      text-align: center;
+      position: relative;
+    }
+
+    .hoverCover {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      opacity: 0;
+      color: white;
+      line-height: 100%;
+      vertical-align: middle;
+    }
+    .hoverCover:hover {
+      opacity: .5;
+    }
+
+  </style>
+
+</head>
+
+<header>
+  <a href="<%= root_path %>"><div id="logo">
+    LOGO
+  </div></a>
+  <div id="userNav">
+    <% if current_user %>
+      <div><%= link_to 'Logout', session_path('thang'), method: :delete %></div>
+      <div id="notifications">N</div>
+      <div id="settings">S</div>
+      <div id="userIconBox"><a href="/users/<%= current_user.id %>">ME</a></div>
+    <% else %>
+      <%= link_to 'Login', login_path %>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <%= link_to 'Sign Up', new_user_path %>
+    <% end %>
+  </div>
+</header>
+
+<body>
+<div class="spacer"></div>
 <%= yield %>
 
 </body>
+
+<script>
+
+</script>
+
 </html>

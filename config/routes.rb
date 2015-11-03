@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  root "main#index"
+  resources :lessons
+  resources :users, only: [:new, :create, :show, :edit, :update]
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :profiles, only: [:index]
+  get '/login', to: 'sessions#new'
+  get '/upvote/:id', to: 'lessons#upvote'
+  get '/users/:id', to: 'users#show'
+  get '/lessons/:id', to: 'lessons#show'
+  get '/logout', to: 'sessions#destroy'
+  # get '/#{user.handle}', to: 'users#show'
+
+  #  :path => '/@user.handle',
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

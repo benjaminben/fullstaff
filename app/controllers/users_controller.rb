@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @commented = Lesson.includes(:comments).where(:comments => {user_id: @user}).all
+    @upvoted = Lesson.includes(:upvote_instances).where(:upvote_instances => {user_id: @user}).all
   end
 
   def edit

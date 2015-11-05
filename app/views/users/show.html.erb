@@ -21,7 +21,7 @@
     </div>
     <div class="userContContainer">
       <p style="text-decoration: underline">Upvoted</p>
-      <% @upvoted.each do |vid| %>
+      <% @upvoted_by_user.each do |vid| %>
     <div class="vidContainer">
       <a href="/lessons/<%= vid.id %>"><div class="hoverCover">
         <%= vid.title %>

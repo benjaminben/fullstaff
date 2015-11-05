@@ -25,7 +25,12 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @commented = Lesson.includes(:comments).where(:comments => {user_id: @user}).all
-    @upvoted = Lesson.includes(:upvote_instances).where(:upvote_instances => {user_id: @user}).all
+    @upvoted_by_user = Lesson.all.select do |lesson|
+      if lesson.upvotes > 0
+        user_ids_who_upvoted = lesson.upvote_instances.map(&:user_id)
+        user_ids_who_upvoted.include? @user.id
+      end
+    end
   end
 
   def edit

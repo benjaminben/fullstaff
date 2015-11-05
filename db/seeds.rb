@@ -51,3 +51,9 @@ u.uploads.create(
   title: "how to make a beat",
   description: "make beats!"
   )
+
+u.uploads.create(
+  video_link: "https://www.youtube.com/embed/2bU5oA4Kkss",
+  title: "Metro",
+  description: "Metro Boomin' wants some more, neighbor"
+  )

@@ -1,1 +1,47 @@
-A user's profile
+<div class="profContent">
+  <div class="profPicBox"><img class="profPic" src="<%= @user.avatar %>"></div>
+  <div class="userInfoBox">
+    <div><p><%= @user.name %> (@<%= @user.handle %>)</p></div>
+    <div><p></p></div>
+    <div></div>
+  </div>
+  <div class="userContributions">
+    <div class="userContHeader">Contributions:</div>
+    <div class="userContContainer">
+      <p style="text-decoration: underline">Uploaded</p>
+      <% @user.uploads.each do |vid| %>
+        <div class="vidContainer">
+        <a href="/lessons/<%= vid.id %>"><div class="hoverCover">
+          <%= vid.title %>
+        </div></a>
+      <div class="vidEmbed">
+      <iframe width="100%" height="100%" src=<%= vid.video_link %> frameborder="0" allowfullscreen></iframe>      </div>
+      </div>
+  <% end %>
+    </div>
+    <div class="userContContainer">
+      <p style="text-decoration: underline">Upvoted</p>
+      <% @user.uploads.each do |vid| %>
+    <div class="vidContainer">
+      <a href="/lessons/<%= vid.id %>"><div class="hoverCover">
+        <%= vid.title %>
+      </div></a>
+      <div class="vidEmbed">
+      <iframe width="100%" height="100%" src=<%= vid.video_link %> frameborder="0" allowfullscreen></iframe>      </div>
+      </div>
+  <% end %>
+    </div>
+    <div class="userContContainer">
+      <p style="text-decoration: underline">Commented</p>
+      <% @user.uploads.each do |vid| %>
+    <div class="vidContainer">
+      <a href="/lessons/<%= vid.id %>"><div class="hoverCover">
+        <%= vid.title %>
+      </div></a>
+      <div class="vidEmbed">
+      <iframe width="100%" height="100%" src=<%= vid.video_link %> frameborder="0" allowfullscreen></iframe>      </div>
+      </div>
+  <% end %>
+    </div>
+  </div>
+</div>

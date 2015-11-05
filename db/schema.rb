@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103022107) do
+ActiveRecord::Schema.define(version: 20151104230204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 20151103022107) do
 
   create_table "comments", force: :cascade do |t|
     t.string   "content"
+    t.integer  "user_id"
+    t.integer  "lesson_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -32,15 +34,46 @@ ActiveRecord::Schema.define(version: 20151103022107) do
     t.string   "video_link"
     t.string   "title"
     t.string   "description"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "upvotes"
   end
 
-  create_table "upvotes", force: :cascade do |t|
+  add_index "lessons", ["user_id"], name: "index_lessons_on_user_id", using: :btree
+
+  create_table "lessons_users", force: :cascade do |t|
+    t.integer "lesson_id"
+    t.integer "user_id"
+  end
+
+  create_table "searches", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "lesson_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "taggings", ["lesson_id"], name: "index_taggings_on_lesson_id", using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "upvotes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "lesson_id"
+  end
+
+  add_index "upvotes", ["lesson_id"], name: "index_upvotes_on_lesson_id", using: :btree
+  add_index "upvotes", ["user_id"], name: "index_upvotes_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -53,7 +86,11 @@ ActiveRecord::Schema.define(version: 20151103022107) do
     t.string   "avatar"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.integer  "upvotes"
   end
 
+  add_foreign_key "lessons", "users"
+  add_foreign_key "taggings", "lessons"
+  add_foreign_key "taggings", "tags"
+  add_foreign_key "upvotes", "lessons"
+  add_foreign_key "upvotes", "users"
 end

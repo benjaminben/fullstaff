@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  @default_pic = "http://www.clipartbest.com/cliparts/4Tb/okj/4Tbokjjqc.png"
+  # @default_pic = "http://www.clipartbest.com/cliparts/4Tb/okj/4Tbokjjqc.png"
 
   def new
     @user = User.new
@@ -8,6 +8,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    if @user.avatar == ""
+      @user.avatar = "http://www.clipartbest.com/cliparts/4Tb/okj/4Tbokjjqc.png"
+    end
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "Account Created! #YouMadeIt"
@@ -15,12 +18,12 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
-    if @user.avatar = nil
-      @user.avatar = @default_pic
-    end
+
+
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def edit

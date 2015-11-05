@@ -4,11 +4,14 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show, :edit, :update]
   resources :sessions, only: [:new, :create, :destroy]
   resources :profiles, only: [:index]
+  resources :comments, only: [:index, :create, :edit, :update, :destroy]
   get '/login', to: 'sessions#new'
   get '/upvote/:id', to: 'lessons#upvote'
   get '/users/:id', to: 'users#show'
   get '/lessons/:id', to: 'lessons#show'
   get '/logout', to: 'sessions#destroy'
+  get 'tags/:tag', to: 'search#index', as: "tag"
+  # get '/remove/lessons/:id', to: 'lessons#destroy'
   # get '/#{user.handle}', to: 'users#show'
 
   #  :path => '/@user.handle',

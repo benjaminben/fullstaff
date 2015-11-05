@@ -1,0 +1,12 @@
+<div id="thumbContainer" class="mainContainer">
+  <% @lessons.each do |vid| %>
+    <div class="vidContainer">
+      <a href="/lessons/<%= vid.id %>"><div class="hoverCover">
+        <%= vid.title %>
+      </div></a>
+      <div class="vidEmbed">
+        <iframe width="100%" height="100%" src=<%= vid.video_link %> frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+  <% end %>
+</div>

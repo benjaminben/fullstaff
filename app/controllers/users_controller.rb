@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @commented = Lesson.all.select {|l| l.user_id==1 }
   end
 
   def edit

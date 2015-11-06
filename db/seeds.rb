@@ -9,29 +9,60 @@
 Lesson.delete_all
 User.delete_all
 
-u = User.create(
+admin = User.create(
+  name: "Admin",
+  email: "admin@fullstaff.io",
+  password: "admin",
+  handle: "admin"
+  )
+
+u1 = User.create(
   name: "First Guy",
   email: "first@guy.coo",
   password: "firstguy",
-  handle: "firstguy"
+  handle: "firstguy",
+  avatar: ""
   )
 
-u.uploads.create(
-  video_link: "https://www.youtube.com/embed/ue9Twt7PHm0",
-  title: "real Fast",
-  description: "so fast!!",
+u2 = User.create(
+  name: "Redfox",
+  email: "redfox@gmail.com",
+  password: "redfox",
+  handle: "redfox",
+  avatar: "https://i.imgur.com/h8kZ2NL.jpg"
   )
 
-u.uploads.create(
-  video_link: "https://www.youtube.com/embed/pMzbMJUPIoA",
-  title: "BETCHA BETCH",
-  description: "incredible. wow",
+bearman = User.create(
+  name: "Bear Man",
+  email: "bearman@bearman.ban",
+  password: "bearman",
+  handle: "bearman",
+  avatar: "http://coolwildlife.com/wp-content/uploads/galleries/post-1593/Brown%20Bear%20Picture%20001.jpg"
   )
 
-u.uploads.create(
+u3 = User.create(
+  name: "Z$chory",
+  email: "zach@munny.com",
+  password: "$zach$",
+  avatar: "http://vignette4.wikia.nocookie.net/villains/images/7/78/Illuminati-Logo.png/revision/latest?cb=20150529234113"
+  )
+
+u3.uploads.create(
+  video_link: "https://www.youtube.com/embed/2bU5oA4Kkss",
+  title: "Metro",
+  description: "Crazy ish y'all. Focus on the groovular impact of different frequencies playing at different times"
+  )
+
+u1.uploads.create(
   video_link: "https://www.youtube.com/embed/1eHZMv_XwF8",
-  title: "OMFG where begin???",
-  description: "Intro to Ableton Live for the n00bs & nubs",
+  title: "Where to begin???",
+  description: "Intro to Ableton Live for the n00bs & nubs"
+  )
+
+u1.uploads.create(
+  video_link: "https://www.youtube.com/embed/ue9Twt7PHm0",
+  title: "Real Fast",
+  description: "so fast!!"
   )
 
 u.uploads.create(
@@ -40,20 +71,26 @@ u.uploads.create(
   description: "reverb did it first i know i know i know..."
   )
 
-u.uploads.create(
+u2.uploads.create(
   video_link: "https://www.youtube.com/embed/gBsC1saQCFE",
   title: "how to synth",
   description: "how to synth"
   )
 
-u.uploads.create(
+u3.uploads.create(
   video_link: "https://www.youtube.com/embed/tzJ6oCgA1uY",
   title: "how to make a beat",
   description: "make beats!"
   )
 
-u.uploads.create(
-  video_link: "https://www.youtube.com/embed/2bU5oA4Kkss",
-  title: "Metro",
-  description: "Metro Boomin' wants some more, neighbor"
+bearman.uploads.create(
+  video_link: "https://www.youtube.com/embed/RuV3YMEhAB8",
+  title: "BEARS",
+  description: "YAY BEARS!!"
+  )
+
+u3.uploads.create(
+  video_link: "https://www.youtube.com/embed/lGDCoU9vKJU",
+  title: "Mixing Hip-Hop Vocals",
+  description: "Uuuuuuhhhhhhh yea how to mix hip-hop vocals ^^^"
   )

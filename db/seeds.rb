@@ -43,7 +43,8 @@ bearman = User.create(
 u3 = User.create(
   name: "Z$chory",
   email: "zach@munny.com",
-  password: "$zach$",
+  password: "zachmunny",
+  handle: "$zach$",
   avatar: "http://vignette4.wikia.nocookie.net/villains/images/7/78/Illuminati-Logo.png/revision/latest?cb=20150529234113"
   )
 
@@ -65,7 +66,7 @@ u1.uploads.create(
   description: "so fast!!"
   )
 
-u.uploads.create(
+u2.uploads.create(
   video_link: "https://www.youtube.com/embed/GPPhmyBIi6k",
   title: "mic drums",
   description: "reverb did it first i know i know i know..."

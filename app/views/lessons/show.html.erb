@@ -54,7 +54,7 @@
       <span style="display: inline-block;" id="username">
         <%= User.find(c.user_id).handle %> &nbsp;&nbsp;|&nbsp;&nbsp;
       </span></a>
-      <span style="font-weight: 300"><%= time_ago_in_words(@lesson.created_at) %> ago</span>&nbsp;
+      <span style="font-weight: 300"><%= time_ago_in_words(c.created_at) %> ago</span>&nbsp;
       <% if current_user.id == c.user_id %>
         <%= link_to 'destroy', edit_comment_path(c) %>
       <% end %>

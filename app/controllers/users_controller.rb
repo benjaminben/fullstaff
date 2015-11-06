@@ -33,11 +33,25 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
+def edit
+  @user = User.find(params[:id])
+  @commented = Lesson.includes(:comments).where(:comments => {user_id: @user}).all
+  @upvoted_by_user = Lesson.all.select do |lesson|
+    if lesson.upvotes > 0
+      user_ids_who_upvoted = lesson.upvote_instances.map(&:user_id)
+      user_ids_who_upvoted.include? @user.id
+    end
   end
+end
 
-  def update
+def update
+  @user = User.find(params[:id])
+  if @user.update(user_params)
+    redirect_to @user
+  else
+    render 'edit'
   end
+end
 
   private
     # Implement Strong Params

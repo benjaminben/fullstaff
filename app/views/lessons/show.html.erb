@@ -3,8 +3,11 @@
     <iframe width="100%" height="100%" src=<%= @lesson.video_link %> frameborder="0" allowfullscreen></iframe>
   </div>
   <span><%= @lesson.title %></span>
-    <%= link_to 'Delete', lesson_path(@lesson), method: :delete %>
-    <%= link_to 'Edit', edit_lesson_path(@lesson) %>
+    <% if @lesson.user_id == current_user.id %>
+      <%= link_to 'Delete', lesson_path(@lesson), method: :delete %>
+      &nbsp;&nbsp;|&nbsp;&nbsp;
+      <%= link_to 'Edit', edit_lesson_path(@lesson) %>
+    <% end %>
   <span>
   <% if @lesson.upvote_instances.where(user_id:current_user).length > 0 %>
     <button disabled>UPVOTED</button>
@@ -16,13 +19,15 @@
   <div><%=raw tag_links(@lesson.all_tags) %></div>
 
   <div class="comment_form">
-    <%= form_for @comment do |f| %>
-      <div class="field">
-        <%= f.text_area :content, :autocomplete => :off, :placeholder => "Write things in here!" %>
-        <%= f.hidden_field :lesson_id, :value => @lesson.id %>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
-      </div>
-      <div class="actions"><%= f.submit :class => "affirmative" %></div>
+    <% if current_user %>
+      <%= form_for @comment do |f| %>
+        <div class="field">
+          <%= f.text_area :content, :autocomplete => :off, :placeholder => "Write things in here!" %>
+          <%= f.hidden_field :lesson_id, :value => @lesson.id %>
+          <%= f.hidden_field :user_id, :value => current_user.id %>
+        </div>
+        <div class="actions"><%= f.submit :class => "affirmative" %></div>
+      <% end %>
     <% end %>
   </div>
 

@@ -1,12 +1,15 @@
+<div class="spacer"></div>
 <div class="mainContainer lessonContainer" style="width: 700px; margin: 0 auto">
   <div style="width: 700px; height: 395px">
     <iframe width="100%" height="100%" src=<%= @lesson.video_link %> frameborder="0" allowfullscreen></iframe>
   </div>
   <span><%= @lesson.title %></span>
-    <% if @lesson.user_id == current_user.id %>
-      <%= link_to 'Delete', lesson_path(@lesson), method: :delete %>
-      &nbsp;&nbsp;|&nbsp;&nbsp;
-      <%= link_to 'Edit', edit_lesson_path(@lesson) %>
+    <% if current_user %>
+      <% if @lesson.user_id == current_user.id %>
+        <%= link_to 'Delete', lesson_path(@lesson), method: :delete %>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <%= link_to 'Edit', edit_lesson_path(@lesson) %>
+      <% end %>
     <% end %>
   <span>
   <% if @lesson.upvote_instances.where(user_id:current_user).length > 0 %>
@@ -15,6 +18,11 @@
     <button><a style="text-decoration: none" href="/upvote/<%= @lesson.id %>">UPVOTE</a></button>
   <% end %>
   </span>
+  <div>
+      <a href="<% user_path %>"><div style="display: inline-block; height: 30px; width: 30px; border: 1px solid black"><img style="width=100%; height: 100%" src="<%= User.find(@lesson.user_id).avatar %>"></div>
+      <%= User.find(@lesson.user_id).name %></a>,
+    <%= time_ago_in_words(@lesson.created_at) %> ago
+  </div>
   <div><%= @lesson.description %></div>
   <div><%=raw tag_links(@lesson.all_tags) %></div>
 

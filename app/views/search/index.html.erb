@@ -1,3 +1,14 @@
+<div id="tagsCloudContainer" class="frontPageColumn">
+  <div id="tagsCloud">
+    <h4 id="tagsCloudHeader" style="font-weight: 300; margin: 20px auto;">Tags:</h4>
+    <% @tags.each do |t| %>
+      <%= link_to t.name, tag_path(t.name) %><br>
+    <% end %>
+  </div>
+</div>
+
+<h3 style="display: block; text-align: center; margin-top: 50px">Showing all results for: <% @tag %> </h3>
+
 <div id="thumbContainer" class="mainContainer">
   <% @lessons.each do |vid| %>
     <div class="vidContainer">
@@ -10,3 +21,8 @@
     </div>
   <% end %>
 </div>
+
+
+<% tag_cloud Tag.counts, %w{css1 css2 css3 css4} do |tag, css_class| %>
+  <%= link_to tag.name, tag_path(tag.name), class: css_class %>
+<% end %>

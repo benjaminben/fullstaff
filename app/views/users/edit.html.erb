@@ -10,15 +10,15 @@
         <%= f.text_field :handle, class: 'profEdit profEditField1' %>
       </div>
       <div>
-        <%= f.label :title, class: 'profEdit' %>
-        <%= f.text_field :title, class: 'profEdit profEditField2' %>
+        <%= f.label :Fields, class: 'profEdit'  %>
+        <%= f.text_field :title, placeholder: "ex: Mastering Engineer | Songwriter", class: 'profEditField2' %>
       </div>
       <div>
-        <%= f.label :email, class: 'profEdit' %>
-        <%= f.text_field :email, class: 'profEdit profEditField2' %>
+        <%= f.label :contact, class: 'profEdit' %>
+        <%= f.text_field :phone, class: 'profEdit profEditField2' %>
       </div>
       <div>
-        <%= f.label :Avatar_url, class: 'profEdit' %>
+        <%= f.label :Image_url, class: 'profEdit' %>
         <%= f.text_field :avatar, class: 'profEdit profEditField2' %>
       </div>
       <div class="actions userEditLink"><%= f.submit %></div>

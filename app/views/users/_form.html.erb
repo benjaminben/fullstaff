@@ -9,30 +9,30 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
+  <div class="field signUpField">
     <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.text_field :email, placeholder: "ex: g.emerick@apple.co" %>
   </div>
-  <div class="field">
+  <div class="field signUpField">
     <%= f.label :password %>
     <%= f.password_field :password %>
   </div>
-  <div class="field">
+  <div class="field signUpField">
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </div>
 
   <div class="spacer"></div>
 
-  <div class="field">
+  <div class="field signUpField">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, placeholder: "ex: Geoff Emerick" %>
   </div>
-  <div class="field">
+  <div class="field signUpField">
     <%= f.label :handle %>
-    <%= f.text_field :handle %>
+    <%= f.text_field :handle, placeholder: "ex: mrmustard" %>
   </div>
-  <div class="field">
+  <div class="field signUpField">
     <%=f.label "Avatar URL" %>
     <%= f.text_field :avatar %>
   </div>

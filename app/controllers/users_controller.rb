@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.avatar == ""
-      @user.avatar = "http://www.clipartbest.com/cliparts/4Tb/okj/4Tbokjjqc.png"
+      @user.avatar = "https://i.imgur.com/V3mluqs.png"
     end
     if @user.save
       session[:user_id] = @user.id

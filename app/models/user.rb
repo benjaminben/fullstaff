@@ -7,11 +7,4 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :handle, presence: true, uniqueness: true, length: {maximum: 30}
 
-  # def avatar
-  #   @default_pic = "http://www.clipartbest.com/cliparts/4Tb/okj/4Tbokjjqc.png"
-  #   if @user.avatar = nil
-  #     @user.avatar = @default_pic
-  #   end
-  # end
-
 end

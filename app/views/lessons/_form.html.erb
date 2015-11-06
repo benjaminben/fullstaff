@@ -12,20 +12,21 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :Embed_Link %><br>
+    <%= f.label :Embed_Link %>
     <%= f.text_field :video_link %>
-  </div>
+  </div><br>
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title %>
     <%= f.text_field :title %>
-  </div>
+  </div><br>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label :description %>
     <%= f.text_field :description %>
-  </div>
+  </div><br>
   <div class="field">
-    <%= f.text_field :all_tags, placeholder: "Tags separated with commas" %>
-  </div>
+    <%= f.label :tags %>
+    <%= f.text_field :all_tags, placeholder: "separated, with, commas" %>
+  </div><br>
   <div class="actions">
     <%= f.submit %>
   </div>

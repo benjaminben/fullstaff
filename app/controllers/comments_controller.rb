@@ -31,6 +31,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
       format.html {redirect_to lesson_path(@comment.lesson)}

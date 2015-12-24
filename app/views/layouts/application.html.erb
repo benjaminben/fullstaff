@@ -88,54 +88,63 @@
 
     #frontPageContainer {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
+      flex-direction: column;
     }
 
+/*    #frontPageContainer div {
+      margin: auto;
+    }*/
+
     .frontPageColumn {
-      display: flex;
       text-align: center;
-      flex-direction: column;
-      flex-grow: 1;
     }
 
     #tagsCloud{
-      width: 150px;
-      height: 600px;
       text-align: center;
-      float: left;
-      position: fixed;
       background-color: white;
       margin-top: 50px;
       border-radius: 5px;
       box-shadow: 1px 3px 6px -4px;
-      margin-left: 50px;
+    }
+
+    #tagsContainer {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+      padding-bottom: 20px;
     }
 
     #adCloud {
-      width: 150px;
-      height: 600px;
       text-align: center;
       float: right;
-      position: fixed;
       background-color: white;
       margin-top: 50px;
       border-radius: 5px;
       box-shadow: 1px 3px 6px -4px;
-      right: 50px;
+      height: 0px;
+    }
+
+    @media all and (min-width: 1050px) {
+      #frontPageContainer {flex-direction: row;}
+      #tagsCloud {order: 1; width: 150px; height: 600px;}
+      .mainContainer {order: 2;}
+      #adCloud {order: 3; width: 150px; height: 600px;}
+
+      #tagsContainer {flex-direction: column;}
     }
 
     #ad {
-      width: 150px;
-      height: 600px;
+      width: 100%;
+      height: 100%;
     }
 
     .mainContainer {
-      margin: 0 auto;
       text-align: center;
-      align-items: center;
-      justify-content: center;
       height: 100%;
-      min-width: 750px;
+      max-width: 750px;
+      flex: 2;
+      margin: auto;
     }
     .lessonContainer iframe {
       display: block;
@@ -143,21 +152,19 @@
     }
 
     #featuredContainer {
-      width: 600px;
+      width: 80%;
       height: 338px;
-      position: relative
-    }
-
-    #featuredContainer iframe {
+      position: relative;
       margin: 0 auto;
     }
 
     #thumbContainer {
       display: flex;
       flex-flow: row wrap;
-      width: 750px;
       z-index: 0;
       align-content: flex-start;
+      margin: auto;
+      /*justify-content: center;*/
     }
 
     .vidContainer {
@@ -280,7 +287,6 @@
       width: 80%;
     }
 
-
     #lessonContentText {
       text-align: 0px;
       position: relative
@@ -305,7 +311,6 @@
       right: 0px;
       top: 12.5px;
     }
-
 
     #userName {
       width: 700px;
@@ -354,6 +359,7 @@
       height: 150px;
       margin-left: 20px
     }
+
 
   </style>
 

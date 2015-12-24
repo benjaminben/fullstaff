@@ -34,9 +34,51 @@
   </div>
   <div class="field signUpField">
     <%=f.label "Avatar URL" %>
-    <%= f.text_field :avatar %>
+    <%= f.text_field :avatar, :id => "avatarInput" %>
   </div>
-  <div id="picPreview" style="height: 100px; width: 100px; border: 1px solid black; margin: 20px auto">
+  <div id="picPreviewBox" style="height: 100px; width: 100px; border: 1px solid black; margin: 20px auto">
+    <img id="preview" style="height: 100%; width: 100%" src="">
   </div>
   <div class="actions"><%= f.submit %></div>
 <% end %>
+
+<script>
+
+$(document).ready();
+
+function validURL(str) {
+  var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+  '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ // domain name
+  '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+  '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+  '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+  '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+  if(!pattern.test(str)) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+$('#avatarInput').on('keyup', function(e) {
+  if (validURL(e.currentTarget.value)) {
+    console.log(e.currentTarget.value);
+    picture = e.currentTarget.value;
+    $('#preview').attr("src", picture);
+  } else {
+    console.log('invalid');
+  }
+});
+
+
+var preview = document.getElementById('picPreview');
+var previewString = $('#avatarInput').innerHTML
+
+function addPreview(){
+  var picPreviewURL = document.getElementById('picPreview').innerHTML;
+  preview.style.backgroundImage = "url("+picPreviewURL+"')"
+}
+
+
+
+</script>

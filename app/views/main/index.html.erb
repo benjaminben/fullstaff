@@ -1,15 +1,6 @@
 <div id="frontPageContainer">
 
-<div id="tagsCloudContainer" class="frontPageColumn">
-  <div id="tagsCloud">
-    <h4 id="tagsCloudHeader" style="font-weight: 300; margin: 20px auto;">Tags:</h4>
-    <% @tags.each do |t| %>
-      <%= link_to t.name, tag_path(t.name) %><br>
-    <% end %>
-  </div>
-</div>
-
-<div style="display: inline-block; min-width: 200px; height: 100%"></div>
+<!-- <div style="display: inline-block; min-width: 200px; height: 100%"></div> -->
 
 <div class="mainContainer frontPageColumn">
   <div class="spacer"></div>
@@ -34,14 +25,20 @@
   </div>
 </div>
 
-<div style="display: inline-block; min-width: 175px; height: 100%;"></div>
-
-<div id="adCloudContainer" class="frontPageColumn">
-  <div id="adCloud">
-    <img id="ad" src="https://i.imgur.com/6q1r233.png" style="opacity: .2">
+<div id="tagsCloud">
+  <h4 id="tagsCloudHeader" style="font-weight: 300; margin: 20px auto;">Tags:</h4>
+  <div id="tagsContainer">
+    <% @tags.each do |t| %>
+      <%= link_to t.name, tag_path(t.name) %>
+    <% end %>
   </div>
 </div>
 
+<!-- <div style="display: inline-block; min-width: 175px; height: 100%;"></div> -->
+
+<div id="adCloud">
+  <img id="ad" src="https://i.imgur.com/6q1r233.png" style="opacity: .2">
+</div>
 
 <% tag_cloud Tag.counts, %w{css1 css2 css3 css4} do |tag, css_class| %>
   <%= link_to tag.name, tag_path(tag.name), class: css_class %>

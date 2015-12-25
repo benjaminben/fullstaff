@@ -3,7 +3,6 @@
 <head>
   <title>FullStaff</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= stylesheet_link_tag    'skeleton', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'normalize', media: 'all', 'data-turbolinks-track' => true %>
   <link href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,700' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,100,300,300italic,700,900' rel='stylesheet' type='text/css'>
@@ -90,6 +89,8 @@
       display: flex;
       justify-content: space-around;
       flex-direction: column;
+      width: 90vw;
+      margin: 0 auto;
     }
 
 /*    #frontPageContainer div {
@@ -103,9 +104,10 @@
     #tagsCloud{
       text-align: center;
       background-color: white;
-      margin-top: 50px;
+      margin: 50px auto;
       border-radius: 5px;
       box-shadow: 1px 3px 6px -4px;
+      width: 90vw;
     }
 
     #tagsContainer {
@@ -127,7 +129,7 @@
 
     @media all and (min-width: 1050px) {
       #frontPageContainer {flex-direction: row;}
-      #tagsCloud {order: 1; width: 150px; height: 600px;}
+      #tagsCloud {order: 1; width: 150px; height: 600px; margin: 50px 0;}
       .mainContainer {order: 2;}
       #adCloud {order: 3; width: 150px; height: 600px;}
 
@@ -152,24 +154,31 @@
     }
 
     #featuredContainer {
-      width: 80%;
-      height: 338px;
+      width: 90vw;
+      height: 51vw;
+      max-width: 600px;
+      max-height: 338px;
       position: relative;
       margin: 0 auto;
     }
 
     #thumbContainer {
+      width: 100%;
+    }
+
+    #thumbs {
       display: flex;
       flex-flow: row wrap;
       z-index: 0;
       align-content: flex-start;
       margin: auto;
-      /*justify-content: center;*/
     }
 
     .vidContainer {
-      width: 125px;
-      height: 125px;
+      max-width: 125px;
+      max-height: 125px;
+      height: 18vw;
+      width: 18vw;
       text-align: center;
       position: relative;
       margin: 0;
@@ -177,6 +186,10 @@
 
     .vidContainer iframe {
       margin: 0;
+      max-width: 125px;
+      max-height: 125px;
+      height: 18vw;
+      width: 18vw;
     }
 
     .hoverCover {
@@ -216,41 +229,61 @@
     }
 
     .profContent {
-      width: 700px;
+      width: 90vw;
       margin: 0 auto;
+      position: relative;
+    }
+
+    .profHeaderBox {
+      display: flex;
+      width: 90vw;
+      height: 20vw;
+      max-height: 150px;
+      justify-content: space-around;
       position: relative;
     }
     .profPicBox {
       display: inline-block;
-      height: 150px;
-      width: 150px;
+      height: 20vw;
+      max-height: 150px;
+      width: 20vw;
+      max-width: 150px;
       border: 1px solid black;
       background: white;
-    }
-    .userInfoBox {
-      display: inline-block;
-      height: 150px;
-      width: 450px;
-      font-size: 20px;
-      margin-left: 30px;
-      position: absolute;
-    }
-    .userInfoBox p {
-      height: 33%;
-      margin-left: -20px;
-      padding: 0;
+      position: relative;
+      order: 1;
     }
     .profPic {
       width: 100%;
       height: 100%;
     }
-
-    .userEditLink {
+    .profPicBox a {
+      width: 100%;
+      text-align: center;
       position: absolute;
+    }
+    .profPicBox input[type=submit] {
+      border: none;
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      padding: 0;
+    }
+    #staffBrace {
+      height: 100%;
+      order: 2;
+    }
+    .userInfoBox {
+      height: 20vw;
+      max-height: 150px;
+      width: 65vw;
+      max-width: 450px;
       font-size: 20px;
-      left: 100%;
-      right: -100px;
-      top: 0px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      order: 3;
     }
 
     .userContributions{
@@ -273,18 +306,20 @@
     }
     .userContContainer div {
       width: 100%;
+      margin: 0 auto;
     }
 
     .profEdit {
       font-size: 20px;
-      display: inline
+      display: flex;
+      flex-flow: row wrap;
     }
 
     .profEditField1 {
-      width: 30%;
+      width: 10px;
     }
     .profEditField2 {
-      width: 80%;
+      width: 10px;
     }
 
     #lessonContentText {
@@ -353,11 +388,6 @@
     }
     .comment_form {
       border: none;
-    }
-
-    #staffBrace {
-      height: 150px;
-      margin-left: 20px
     }
 
 

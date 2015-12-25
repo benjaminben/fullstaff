@@ -1,28 +1,32 @@
 <div class="spacer"></div>
 <div class="profContent">
-  <div class="profPicBox"><img class="profPic" src="<%= @user.avatar %>"></div>
-  <div class="userInfoBox profEdit">
+  <div class="profHeaderBox">
+    <img id="staffBrace" src="https://i.imgur.com/nK6UxVi.png">
+    <div class="profPicBox"><img class="profPic" src="<%= @user.avatar %>">
     <%= form_for @user do |f| %>
-      <div>
-        <%= f.label :name, class: 'profEdit' %>
-        <%= f.text_field :name, class: 'profEdit profEditField1' %>
-        <%= f.label :handle, class: 'profEdit' %>
-        <%= f.text_field :handle, class: 'profEdit profEditField1' %>
-      </div>
-      <div>
-        <%= f.label :Fields, class: 'profEdit'  %>
-        <%= f.text_field :title, placeholder: "ex: Mastering Engineer | Songwriter", class: 'profEditField2' %>
-      </div>
-      <div>
-        <%= f.label :contact, class: 'profEdit' %>
-        <%= f.text_field :phone, class: 'profEdit profEditField2' %>
-      </div>
-      <div>
-        <%= f.label :Image_url, class: 'profEdit' %>
-        <%= f.text_field :avatar, class: 'profEdit profEditField2' %>
-      </div>
-      <div class="actions userEditLink"><%= f.submit %></div>
-    <% end %>
+      <%= f.submit %>
+    </div>
+    <div class="userInfoBox profEdit">
+        <div>
+          <%= f.label :name, class: 'profEdit' %>
+          <%= f.text_field :name, class: 'profEdit profEditField1' %>
+          <%= f.label :handle, class: 'profEdit' %>
+          <%= f.text_field :handle, class: 'profEdit profEditField1' %>
+        </div>
+        <div>
+          <%= f.label :Fields, class: 'profEdit'  %>
+          <%= f.text_field :title, placeholder: "ex: Mastering Engineer | Songwriter", class: 'profEditField2' %>
+        </div>
+        <div>
+          <%= f.label :contact, class: 'profEdit' %>
+          <%= f.text_field :phone, class: 'profEdit profEditField2' %>
+        </div>
+        <div>
+          <%= f.label :Image_url, class: 'profEdit' %>
+          <%= f.text_field :avatar, class: 'profEdit profEditField2' %>
+        </div>
+      <% end %>
+    </div>
   </div>
   <div class="spacer"></div>
   <div class="userContributions">

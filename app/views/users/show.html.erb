@@ -20,10 +20,9 @@
     <div class="userContContainer">
       <p style="text-decoration: underline; margin: 10px 0">Uploaded</p>
       <% @user.uploads.each do |vid| %>
-        <div class="vidContainer">
-        <a href="/lessons/<%= vid.id %>"><div class="hoverCover"></div></a>
-      <div class="vidEmbed">
-      <iframe width="100%" height="100%" src=<%= vid.video_link %> frameborder="0" allowfullscreen></iframe>      </div>
+      <div class="vidContainer">
+      <a href="/lessons/<%= vid.id %>"><div class="hoverCover"></div></a>
+      <iframe width="100%" height="100%" src=<%= vid.video_link %> frameborder="0" allowfullscreen></iframe>
       </div>
   <% end %>
     </div>
@@ -32,8 +31,8 @@
       <% @upvoted_by_user.each do |vid| %>
     <div class="vidContainer">
       <a href="/lessons/<%= vid.id %>"><div class="hoverCover"></div></a>
-      <div class="vidEmbed">
-      <iframe width="100%" height="100%" src=<%= vid.video_link %> frameborder="0" allowfullscreen></iframe>      </div>
+
+      <iframe width="100%" height="100%" src=<%= vid.video_link %> frameborder="0" allowfullscreen></iframe>
       </div>
   <% end %>
     </div>
@@ -42,8 +41,7 @@
       <% @commented.each do |vid| %>
     <div class="vidContainer">
       <a href="/lessons/<%= vid.id %>"><div class="hoverCover"></div></a>
-      <div class="vidEmbed">
-      <iframe width="100%" height="100%" src=<%= vid.video_link %> frameborder="0" allowfullscreen></iframe>      </div>
+      <iframe width="100%" height="100%" src=<%= vid.video_link %> frameborder="0" allowfullscreen></iframe>
       </div>
   <% end %>
     </div>

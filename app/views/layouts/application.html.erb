@@ -22,15 +22,19 @@
     header {
       width: 100%;
       height: 50px;
-      min-width: 650px;
       position: fixed;
       border: .5px solid black;
       background-color: white;
       z-index: 5;
       display: flex;
       justify-content: space-between;
-      align-items: center;
       box-shadow: 0px 3px 6px -4px;
+    }
+
+    @media screen and (max-width: 640px) {
+      #searchBar {
+        display: none;
+      }
     }
 
     header div {
@@ -45,16 +49,26 @@
     }
 
     #userNav {
-      float: right;
+      display: flex;
+      justify-content: space-around;
+      height: 100%;
+    }
+
+    #userNav a, #userNav div {
+      /*height: 100%;*/
+      display: flex;
+      margin: auto 2.5px
     }
 
     .headerIcon {
       height: 40px;
       width: 40px;
+      position: relative;
     }
 
     .headerIcon img {
-      position: absolute
+      width: 15px;
+      height: 15px;
     }
 
     #userIconBox {
@@ -63,7 +77,7 @@
       border: 1px solid black;
       background-size: 100% 100%;
       z-index: 10;
-     }
+    }
 
     #userIcon {
       height: 35px;
@@ -92,10 +106,6 @@
       width: 90vw;
       margin: 0 auto;
     }
-
-/*    #frontPageContainer div {
-      margin: auto;
-    }*/
 
     .frontPageColumn {
       text-align: center;
@@ -239,6 +249,7 @@
       width: 90vw;
       height: 20vw;
       max-height: 150px;
+      max-width: 600px;
       justify-content: space-around;
       position: relative;
     }
@@ -271,6 +282,7 @@
     }
     #staffBrace {
       height: 100%;
+      width: 4%;
       order: 2;
     }
     .userInfoBox {
@@ -278,12 +290,34 @@
       max-height: 150px;
       width: 65vw;
       max-width: 450px;
-      font-size: 20px;
+      font-size: calc(12px + 1vw);
       position: relative;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       order: 3;
+    }
+
+    .profEdit {
+      font-size: 20px;
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    .profEditField {
+      display: flex;
+      justify-content: left;
+    }
+
+    .profEdit:nth-child(1), .profEdit:nth-child(2) {
+      width: 50%;
+    }
+    .profEdit:nth-child(1) input, .profEdit:nth-child(2) input {
+      max-width: 150px;
+    }
+
+    .profEditField input {
+      max-width: 300px;
     }
 
     .userContributions{
@@ -300,7 +334,7 @@
     .userContContainer {
       display: flex;
       flex-direction: column;
-      width: 150px;
+      width: 15vw;
       text-align: center;
       font-weight: 300;
     }
@@ -309,29 +343,23 @@
       margin: 0 auto;
     }
 
-    .profEdit {
-      font-size: 20px;
-      display: flex;
-      flex-flow: row wrap;
-    }
-
-    .profEditField1 {
-      width: 10px;
-    }
-    .profEditField2 {
-      width: 10px;
-    }
-
     #lessonContentText {
       text-align: 0px;
-      position: relative
+      position: relative;
     }
 
-    #lessonContentText div {
-      padding: 10px;
+
+    .commentHeader {
+      padding: 0;
+      display: flex;
     }
-    #lessonContentText form {
-      border-left: 1px solid black;
+
+    .commentHeader span {
+      margin: auto 0;
+    }
+
+    .commentHeader a {
+      margin: auto 0;
     }
 
     .lessonContainer {
@@ -341,29 +369,42 @@
       height: 100%
     }
 
+    #lessonContentText form {
+      border-left: 1px solid black;
+    }
+
     #upvote {
       position: absolute;
       right: 0px;
       top: 12.5px;
     }
 
-    #userName {
-      width: 700px;
+    #lessonFooter {
+      /*margin-bottom: 50px*/
     }
-    #userName p {
-      display: inline-block;
-      margin: 0;
+
+    #lessonDetailsHeader {
+      display: flex;
     }
-    #userName div {
-      padding: 0px;
-      height: 30px;
-      width: 30px;
-      font-family: Ubuntu-light
+    #lessonDetailsHeader div {
+      margin: auto 0;
     }
-    #userName img {
+
+    #lessonUser {
+      display: flex;
+    }
+
+    #lessonUserIcon {
+      width: 35px;
+      height: 35px;
+      background: white;
+      position: relative
+    }
+    #lessonUserIcon img {
       width: 100%;
       height: 100%;
     }
+
     #lessonDescription {
       border: none;
       background: white;
@@ -371,12 +412,14 @@
       padding: 10px;
       border-radius: 3px
     }
-    .comment #content {
+    #comment_content {
       background: white;
-      border-radius: 3px
+      border-radius: 3px;
+      width: 100%;
+      resize: none;
     }
     .comment_form {
-      border: 0px;
+      /*border: 0px;*/
     }
     #lessonTags {
       border-bottom: 3px solid black;
@@ -386,10 +429,33 @@
     #lessonTags span {
       font-weight: 300;
     }
-    .comment_form {
-      border: none;
-    }
 
+    .comment {
+      margin-bottom: 20px
+    }
+    .commentHeader div {
+      margin: auto 0;
+    }
+    .commentUser {
+      display: flex;
+    }
+    .commentUserIcon {
+      width: 35px;
+      height: 35px;
+      background: white;
+      position: relative;
+      margin: auto
+    }
+    .commentUserIcon img {
+      width: 100%;
+      height: 100%;
+    }
+    .commentUserName {
+      margin: auto;
+    }
+    .commentContent {
+      font-weight: 300;
+    }
 
   </style>
 

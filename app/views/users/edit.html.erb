@@ -7,21 +7,23 @@
       <%= f.submit %>
     </div>
     <div class="userInfoBox profEdit">
-        <div>
+        <div class="profEditField">
           <%= f.label :name, class: 'profEdit' %>
           <%= f.text_field :name, class: 'profEdit profEditField1' %>
+        </div>
+        <div class="profEditField">
           <%= f.label :handle, class: 'profEdit' %>
           <%= f.text_field :handle, class: 'profEdit profEditField1' %>
         </div>
-        <div>
+        <div class="profEditField">
           <%= f.label :Fields, class: 'profEdit'  %>
           <%= f.text_field :title, placeholder: "ex: Mastering Engineer | Songwriter", class: 'profEditField2' %>
         </div>
-        <div>
+        <div class="profEditField">
           <%= f.label :contact, class: 'profEdit' %>
           <%= f.text_field :phone, class: 'profEdit profEditField2' %>
         </div>
-        <div>
+        <div class="profEditField">
           <%= f.label :Image_url, class: 'profEdit' %>
           <%= f.text_field :avatar, class: 'profEdit profEditField2' %>
         </div>

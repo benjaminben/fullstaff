@@ -7,31 +7,50 @@
 
 <div id="lessonContentText">
 
-  <span><% if @lesson.upvote_instances.where(user_id:current_user).length > 0 %>
-    <button id="upvote" disabled>UPVOTED</button>
-  <% else %>
-    <button id="upvote"><a style="text-decoration: none" href="/upvote/<%= @lesson.id %>">UPVOTE</a></button>
-  <% end %></span>
+  <div id="lessonFooter">
+    <div style="font-size: 40px; font-weight: 700"><%= @lesson.title %></div>
 
-  <span style="font-size: 40px; font-weight: 700"><%= @lesson.title %></span>
+    <div><% if @lesson.upvote_instances.where(user_id:current_user).length > 0 %>
+      <button id="upvote" disabled>UPVOTED</button>
+    <% else %>
+      <button id="upvote"><a style="text-decoration: none" href="/upvote/<%= @lesson.id %>">UPVOTE</a></button>
+    <% end %></div>
+  </div>
+
+  <div id="lessonDetailsHeader">
+
     <% if current_user %>
-      <p id="lessonEditUpdate"><% if @lesson.user_id == current_user.id || current_user.id == 1 %>
-        <%= link_to 'Delete', lesson_path(@lesson), method: :delete %>
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-        <%= link_to 'Edit', edit_lesson_path(@lesson) %>
-      <% end %></p>
+      <div id="lessonEditUpdate">
+        <% if @lesson.user_id == current_user.id || current_user.id == 1 %>
+          <%= link_to 'Delete', lesson_path(@lesson), method: :delete %>
+          &nbsp;&nbsp;|&nbsp;&nbsp;
+          <%= link_to 'Edit', edit_lesson_path(@lesson) %>
+        <% end %>
+      </div>
     <% end %>
 
-  <span id="userName"><p><a href="/users/<%= @lesson.user_id %>">
-    <div style="display: inline-block; padding: none; border: 1px solid black; background: white">
-      <img src="<%= User.find(@lesson.user_id).avatar %>">
-    </div> &nbsp;
-      @<%= User.find(@lesson.user_id).handle %></a> &nbsp;&nbsp;|&nbsp;&nbsp;
-      <span style="font-weight: 300"><%= time_ago_in_words(@lesson.created_at) %> ago</span>
-  </p></span>
+    <a id="lessonUser" href="/users/<%= @lesson.user_id %>">
+      <div id="lessonUserIcon">
+        <img src="<%= User.find(@lesson.user_id).avatar %>">
+      </div> &nbsp;
+      <div id="lessonUserName">
+          <%= User.find(@lesson.user_id).handle %>
+      </div>
+    </a>
+
+    <div id="lessonDate" style="font-weight: 300">
+      &nbsp;&nbsp;|&nbsp;&nbsp;<%= time_ago_in_words(@lesson.created_at) %> ago
+    </div>
+
+  </div>
+
   <p  display= "block" id="lessonDescription"><%= @lesson.description %></p>
-  <div id="lessonTags"><span>Tags:  &nbsp; </span> <%=raw tag_links(@lesson.all_tags) %></div>
+    <div id="lessonTags"><span>Tags:  &nbsp; </span> <%=raw tag_links(@lesson.all_tags) %></div>
   <br>
+
+
+<div id="commentSection">
+
   <div class="comment_form" style="border: none">
     <% if current_user %>
       <%= form_for @comment do |f| %>
@@ -46,24 +65,24 @@
   </div>
   <% @comments.each do |c| %>
       <div class="comment">
-      <a href="/users/<%= c.user_id %>">
-        <div style="display: inline-block; padding: 0; border: 1px solid black;
-        width: 30px; height: 30px; margin: 0; background: white">
-        <img style="height: 100%; width: 100%" src="<%= User.find(@lesson.user_id).avatar %>">
-      </div> &nbsp;
-      <span style="display: inline-block;" id="username">
-        <%= User.find(c.user_id).handle %> &nbsp;&nbsp;|&nbsp;&nbsp;
-      </span></a>
-      <span style="font-weight: 300"><%= time_ago_in_words(c.created_at) %> ago</span>&nbsp;
-      <% if current_user.id == c.user_id %>
-        <%= link_to 'destroy', edit_comment_path(c) %>
-      <% end %>
-      <div id="content">
-        <%= c.content %>
-      </div>
+        <div class="commentHeader">
+          <a class="commentUser" href="/users/<%= c.user_id %>">
+            <div class="commentUserIcon">
+              <img src="<%= User.find(c.user_id).avatar %>">
+            </div> &nbsp;
+            <div class="commentUserName">
+              <%= User.find(c.user_id).handle %>
+            </div></a>
+          <div style="font-weight: 300">&nbsp;&nbsp;|&nbsp;&nbsp;<%= time_ago_in_words(c.created_at) %> ago</div>&nbsp;
+          <% if current_user.id == c.user_id %>
+            <%= link_to 'destroy', edit_comment_path(c) %>
+          <% end %>
+        </div>
+        <div class="commentContent">
+          <%= c.content %>
+        </div>
 
     </div>
   <% end %>
 
 </div>
-

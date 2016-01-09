@@ -1,27 +1,30 @@
-<div id="tagsCloudContainer" class="frontPageColumn">
-  <div id="tagsCloud">
-    <h4 id="tagsCloudHeader" style="font-weight: 300; margin: 20px auto;">Tags:</h4>
+<div id="searchPageContainer">
+<div id="tagsCloud">
+  <h4 id="tagsCloudHeader" style="font-weight: 300; margin: 20px auto;">Tags:</h4>
+  <div id="tagsContainer">
     <% @tags.each do |t| %>
-      <%= link_to t.name, tag_path(t.name) %><br>
+      <%= link_to t.name, tag_path(t.name) %>
     <% end %>
   </div>
 </div>
 
-<h3 style="display: block; text-align: center; margin-top: 50px">Showing all results for: <% @tag %> </h3>
+  <div id="resultsContainer">
+    <h3>Showing all results:</h3>
 
-<div id="thumbContainer" class="mainContainer">
-  <% @lessons.each do |vid| %>
-    <div class="vidContainer">
-      <a href="/lessons/<%= vid.id %>"><div class="hoverCover">
-        <%= vid.title %>
-      </div></a>
-      <div class="vidEmbed">
-        <iframe width="100%" height="100%" src=<%= vid.video_link %> frameborder="0" allowfullscreen></iframe>
-      </div>
+    <div id="thumbContainer" class="mainContainer">
+      <% @lessons.each do |vid| %>
+        <div class="vidContainer">
+          <a href="/lessons/<%= vid.id %>">
+            <div class="hoverCover">
+              <%= vid.title %>
+            </div>
+          </a>
+        <iframe src=<%= vid.video_link %> frameborder="0" allowfullscreen></iframe>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
-
 
 <% tag_cloud Tag.counts, %w{css1 css2 css3 css4} do |tag, css_class| %>
   <%= link_to tag.name, tag_path(tag.name), class: css_class %>
